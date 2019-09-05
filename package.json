@@ -1,14 +1,25 @@
 {
-  "name": "stack",
-  "version": "1.0.0",
-  "description": "",
-  "main": "Stack.ts",
-  "directories": {
-    "test": "test"
+  "name": "stack-ts",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@types/chai": "^4.2.1",
+    "@types/mocha": "^5.2.7"
+  },
+  "devDependencies": {
+    "typescript": "^3.6.2",
+    "chai": "^4.2.0",
+    "nyc": "^14.1.1",
+    "mocha": "^6.2.0",
+    "ts-node": "^8.3.0"
   },
   "scripts": {
     "test": "nyc mocha -r ts-node/register test/**/*.spec.ts",
     "tsc": "tsc"
+  },
+  "author": {
+    "name": "Elizaveta Grib",
+    "email": "yelizavetahr@gmail.com"
   },
   "nyc": {
     "include": [
@@ -26,16 +37,7 @@
     ],
     "all": true
   },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^6.0.2",
-    "nyc": "^13.3.0",
-    "source-map-support": "^0.5.10",
-    "ts-node": "^8.0.3",
-    "typescript": "^3.3.3333"
-  },
-  "dependencies": {
-    "@types/chai": "^4.1.7",
-    "@types/mocha": "^5.2.6"
+  "directories": {
+    "test": "test"
   }
 }
