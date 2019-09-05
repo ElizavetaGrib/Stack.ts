@@ -8,16 +8,16 @@ export default class StackNode<T> {
         this.next = null;
     };
 
-    public setNext = (next: StackNode<T>): void => {
-        this.next = next;
-    };
-
     public getData = (): T => {
         return this.data;
     };
 
     public getNext = (): StackNode<T> => {
         return this.next;
+    };
+
+    public setNext = (next: StackNode<T>): void => {
+        this.next = next;
     };
 
 };

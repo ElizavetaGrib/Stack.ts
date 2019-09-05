@@ -10,12 +10,12 @@ export default class Stack<T> {
         this.length = 0;
     }
 
-    public size = (): number => {
-        return this.length;
-    };
-
     public peek = (): StackNode<T> => {
         return this.top;
+    };
+
+    public size = (): number => {
+        return this.length;
     };
 
     public push = (value: T): void => {
@@ -29,9 +29,8 @@ export default class Stack<T> {
         if (this.length) {
             this.top = this.top.getNext();
             this.length -= 1;
-
         } else {
-            return `Stack is empty`;
+            return 'Stack is empty';
         }
     };
 
