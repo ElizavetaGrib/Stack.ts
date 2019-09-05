@@ -1,50 +1,52 @@
-import {StackNode} from './StackNode';
+import StackNode from './StackNode';
 
-export class Stack<T> {
-    public top: StackNode<T>;
-    public length: number;
+export default class Stack<T> {
+
+    private top: StackNode<T>;
+    private length: number;
 
     constructor() {
         this.top = null;
         this.length = 0;
     }
 
-    public size(): number {
+    public size = (): number => {
         return this.length;
-    }
+    };
 
-    public push(value: T): void {
-        let node = new StackNode<T>(value);
-        let current = this.top;
-        node.next = this.top;
+    public peek = (): StackNode<T> => {
+        return this.top;
+    };
+
+    public push = (value: T): void => {
+        const node: StackNode<T> = new StackNode<T>(value);
+        node.setNext(this.top);
         this.top = node;
-        this.length++;
-    }
+        this.length += 1;
+    };
 
-    public pop():  void | string {
+    public pop = (): void | string => {
         if (this.length) {
-            this.top = this.top.next;
-            this.length--;
-        }
-        else {
-            var str: string = "stack is empty";
-            return str;
-        }
-    }
+            this.top = this.top.getNext();
+            this.length -= 1;
 
-    public tostring(): string {
+        } else {
+            return `Stack is empty`;
+        }
+    };
+
+    public toString = (): string => {
+        let current: StackNode<T> = this.top;
         let result: string = '';
-        let i: number = 0;
-        let current = this.top;
-        while(i != this.length) {
-            result += JSON.stringify(current.data) + ', ';
-            current = current.next;
-            i++;
+        for (let i: number = 0; i < this.length; i += 1) {
+            result += `${JSON.stringify(current.getData())}, `;
+            current = current.getNext();
         }
         return result.slice(0, result.length - 2);
-    }
+    };
 
-    public equals(list2: Stack<T>): boolean {
-        return this.tostring() === list2.tostring();
-    }
-}
+    public equals = (stack: Stack<T>): boolean => {
+        return this.toString() === stack.toString();
+    };
+
+};
